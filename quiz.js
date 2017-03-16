@@ -80,17 +80,34 @@ function showProgress(){
 }
 
 function showScores(){
+    var suckerImg = "";
+    var winnerImg = "";
     var gameOver = "<h1>Result</h1>";
-        gameOver += "<h2 id='score'> Your score: " + quiz.score + "</h2>";
+        gameOver += "<h2 id='score'> Your score: " + quiz.score + "</h2>" +
+            "<br>" + "<button id='playAgain' onclick='location.href=\"index.html\"'>Play Again</button>"
+            + "<span id='viewQuestions' onclick='showQuestions()'>view questions</span>";
         var element = document.getElementById("wrapper");
         element.innerHTML = gameOver;
+    if(quiz.score < 2){
+        $(suckerImg).insertBefore("#playAgain")
+    }else{
+        $(winnerImg).insertBefore("#playAgain")
+    }
+}
+
+function showQuestions(){
+    for(i in quiz.questions) {
+        if(quiz.questions[i].answer)
+       $("<p>"+quiz.questions[i].text+"</p>").insertAfter("#playAgain")
+    }
+    $("#viewQuestions").hide()
 }
 
 var questions=[
-    new Question("What is my name bro?", ["Tishkata", "Lebron", "maaf", "ivan"], "Tishkata"),
+    new Question("What is my name bro?", ["Tishkata", "Lebron", "Izdislav", "ivan"], "Tishkata"),
     new Question("What is my height?", ["1.90", "1.72", "1.80", "1.50"], "1.72"),
-    new Question("My favourite team?", ["CSKA", "Litex", "leWCki", "nsdnos"], "CSKA"),
-    new Question("My hometown?", ["Mezdra", "Sofia", "massf", "Vratsa"], "Vratsa")
+    new Question("Who is the best club in the world?", ["CSKA", "Litex", "leWCki", "Barcelona"], "CSKA"),
+    new Question("My hometown?", ["Mezdra", "Sofia", "New York", "Vratsa"], "Vratsa")
 ];
 
 var quiz = new Quiz(questions);
