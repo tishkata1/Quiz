@@ -80,8 +80,8 @@ function showProgress(){
 }
 
 function showScores(){
-    var suckerImg = "";
-    var winnerImg = "";
+    var suckerImg = "<img width='200' height='170' src='loser.jpg'/>";
+    var winnerImg = "<img width='550' height='300' src='winner.jpg'/>";
     var gameOver = "<h1>Result</h1>";
         gameOver += "<h2 id='score'> Your score: " + quiz.score + "</h2>" +
             "<br>" + "<button id='playAgain' onclick='location.href=\"index.html\"'>Play Again</button>"
